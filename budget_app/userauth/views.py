@@ -5,5 +5,9 @@ from django.contrib.auth import login, authenticate
 # Create your views here.
 
 def login(request):
-    response = redirect('/login/')
+    if request.user.is_authenticated:
+        response = redirect('/dashboard/')
+    else:
+        response = redirect('/login/')
+    
     return response

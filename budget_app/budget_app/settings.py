@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "budgeting_app.apps.BudgetingAppConfig",
-    "userauth.apps.UserauthConfig",
+    "budgeting_app",
+    "userauth",
 ]
 
 MIDDLEWARE = [
