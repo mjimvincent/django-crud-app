@@ -4,4 +4,4 @@ from django.http import HttpResponse
 
 
 def dashboard(response):
-    return render(response, "budgeting_app/dashboard.html", {})
+    return render(response, "admin/index.html", {})
