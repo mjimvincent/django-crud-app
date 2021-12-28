@@ -15,8 +15,9 @@ from django.urls import reverse
 def index(request):
     context = {'segment': 'index'}
 
-    html_template = loader.get_template('budgeting_app/index.html')
-    return HttpResponse(html_template.render(context, request))
+    # html_template = loader.get_template('budgeting_app/index.html')
+    # return HttpResponse(html_template.render(context, request))
+    return render(request, "budgeting_app/index.html", context)
 
 
 @login_required(login_url="/login/")
