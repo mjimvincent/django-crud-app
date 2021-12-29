@@ -6,6 +6,7 @@ from django import template
 from django.contrib.auth.decorators import login_required
 from django.template import loader
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 ##Orig
 # def dashboard(response):
@@ -22,7 +23,8 @@ def index(request):
 
 @login_required(login_url="/login/")
 def pages(request):
-    context = {}
+    users = User.objects.all()
+    context = {"users" : users}
     # All resource paths end in .html.
     # Pick out the html file name from the url. And load that template.
     try:

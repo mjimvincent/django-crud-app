@@ -26,6 +26,9 @@
     Django Volt Dashboard - {% block title %}{% endblock %} | AppSeed
 </title>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="title" content="Volt - Free Bootstrap 5 Dashboard">
 <meta name="author" content="Themesberg">
@@ -85,6 +88,12 @@
     
   <!-- Specific Page JS goes HERE  -->
   {% block javascripts %}{% endblock javascripts %}  
-      
+
+  <script>
+    $(document).ready( function () {
+        $('#users-table').DataTable();
+    } );
+  </script>
+
 </body>
 </html>
