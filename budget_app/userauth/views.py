@@ -5,7 +5,6 @@ from .forms import LoginForm, SignUpForm
 # from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
-
 def login_view(request):
         # return HttpResponse("Hello")
         # return render(request, "accounts/login.html", {})
@@ -44,7 +43,7 @@ def register_user(request):
             msg = 'User created - please <a href="/login">login</a>.'
             success = True
 
-            # return redirect("/login/")
+        #     return redirect("/login/")
 
         else:
             msg = 'Form is not valid'
