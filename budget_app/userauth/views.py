@@ -46,7 +46,9 @@ def register_user(request):
         #     return redirect("/login/")
 
         else:
-            msg = 'Form is not valid'
+        #     msg = 'Form is not valid'
+            msg = form.errors
+            #test user password: adminpassword123
     else:
         form = SignUpForm()
 
