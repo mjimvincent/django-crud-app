@@ -1,0 +1,18 @@
+{% for user in users %}
+                <tr>
+                    <!-- <td><input class="form-check-input" type="checkbox" value="" id="checkthis"></td> -->
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.date_joined }}</td>
+                    <td>
+                        <button class="btn btn-sm btn-info js-update-user" data-url="{% url 'user_update' user.id %}" type="button">Edit</button>
+                        <button class="btn btn-sm btn-danger js-delete-user" data-url="{% url 'user_delete' user.id %}" type="button" data-url="{% url 'user_delete' user.id %}">Delete</button>
+                    </td>
+                </tr>
+                
+
+
+              {% endfor %}

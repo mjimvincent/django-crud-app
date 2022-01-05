@@ -24,195 +24,63 @@
           <h2 class="h4">All Orders</h2>
           <p class="mb-0">Your web analytics dashboard template.</p>
       </div>
-    <!-- TODO -->
-    <form method="post" action="" class="mt-4">
-                                
-        {% csrf_token %}
+        
       <div class="btn-toolbar mb-2 mb-md-0">
-        <a href="#" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#modal-form-signup">
+        <!-- <a href="" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center" data-url="{% url 'user_create' %}">
+            <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+            Create User
+        </a> -->
+        <button type="button" class="btn btn-primary js-create-user" data-url="{% url 'user_create' %}">
             <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
             Add User
-        </a>
+          </button>
       </div>
-    <!-- Modal -->
-      <!-- Button Modal -->
-      <!-- <button type="button" class="btn btn-block btn-gray-800 mb-3" data-bs-toggle="modal" data-bs-target="#modal-form-signup">Sign Up</button> -->
-      <!-- Modal Content -->
-      <div class="modal fade" id="modal-form-signup" tabindex="-1" role="dialog" aria-labelledby="modal-form-signup" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                  <div class="modal-body p-0">
-                      <div class="card p-3 p-lg-4">
-                          <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
-                          <div class="text-center text-md-center mb-4 mt-md-0">
-                              <h1 class="mb-0 h4">Create Account </h1>
-                              <br />
-                                <p>
-                                    {% if msg %}
-                                        {{ msg | safe }}
-                                    {% else %}
-                                        Add your credentials
-                                    {% endif %}                                     
-                                </p> 
-                          </div>
-                          
-
-                            <div class="form-group mb-4">
-                                <label for="email">Username</label>
-                                <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <span class="fas fa-user-circle"></span>
-                                    </span>
-                                    {{ form.username }}
-                                </div>  
-                                <span class="text-error">{{ form.username.errors }}</span>
-                            </div>
-
-                            <!-- Form -->
-                            <div class="form-group mb-4">
-                                <label for="email">First Name</label>
-                                <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <span class="fas fa-envelope"></span>
-                                    </span>
-                                    {{ form.first_name }}
-                                </div>  
-                                <span class="text-error">{{ form.firstname.errors }}</span>
-                            </div>
-                            <!-- End of Form -->
-                            <!-- Form -->
-                            <div class="form-group mb-4">
-                                <label for="email">Last Name</label>
-                                <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <span class="fas fa-envelope"></span>
-                                    </span>
-                                    {{ form.last_name }}
-                                </div>  
-                                <span class="text-error">{{ form.lastname.errors }}</span>
-                            </div>
-                            <!-- End of Form -->
-
-                            <!-- Form -->
-                            <div class="form-group mb-4">
-                                <label for="email">Your Email</label>
-                                <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <span class="fas fa-envelope"></span>
-                                    </span>
-                                    {{ form.email }}
-                                </div>  
-                                <span class="text-error">{{ form.email.errors }}</span>
-                            </div>
-                            <!-- End of Form -->
-                            <div class="form-group">
-                                
-                                <!-- Form -->
-                                <div class="form-group mb-4">
-                                    <label for="password">Your Password</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text" id="basic-addon2">
-                                            <span class="fas fa-unlock-alt"></span>
-                                        </span>
-                                        {{ form.password1 }}
-                                    </div>  
-                                    <span class="text-error">{{ form.password1.errors }}</span>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="password">Password Confirmation</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text" id="basic-addon2">
-                                            <span class="fas fa-unlock-alt"></span>
-                                        </span>
-                                        {{ form.password2 }}
-                                    </div>  
-                                    <span class="text-error">{{ form.password2.errors }}</span>
-                                </div>
-
-                                <!-- End of Form -->
-                                
-                            </div>
-                            <div class="d-grid">
-                                <button type="submit" name="register" class="btn btn-gray-800">Add User</button>
-                            </div>
-                        </form>
-                          
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <!-- End of Modal Content -->
-      <!-- Modal -->
   </div>
   
   <div class="card card-body border-0 shadow table-wrapper table-responsive">
-      <table class="table table-hover" id="users-table">
+      <table class="display compact" id="users-table">
           <thead>
               <tr>
-                  <th class="border-gray-200"><input class="form-check-input" type="checkbox" value="" id="checkall"></th>						
+                  <!-- <th class="border-gray-200"><input class="form-check-input" type="checkbox" value="" id="checkall"></th>						 -->
+                  <th class="border-gray-200">ID</th>						
                   <th class="border-gray-200">Username</th>						
                   <th class="border-gray-200">Email</th>
                   <th class="border-gray-200">First Name</th>
                   <th class="border-gray-200">Last Name</th>
                   <th class="border-gray-200">Date Joined</th>
-                  <th class="border-gray-200">Edit</th>
-                  <th class="border-gray-200">Delete</th>
+                  <th class="border-gray-200">Action</th>
               </tr>
           </thead>
           <tbody>
-              {% for user in users %}
-                <tr>
-                    <td><input class="form-check-input" type="checkbox" value="" id="checkthis"></td>
-                    <td>{{ user.username }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.first_name }}</td>
-                    <td>{{ user.last_name }}</td>
-                    <td>{{ user.date_joined }}</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                
-
-
-              {% endfor %}
-              <!-- Item -->
-              <!-- <tr>
-                  <td>
-                      <a href="#" class="fw-bold">
-                          456478
-                      </a>
-                  </td>
-                  <td>
-                      <span class="fw-normal">Platinum Subscription Plan</span>
-                  </td>
-                  <td><span class="fw-normal">1 May 2020</span></td>                        
-                  <td><span class="fw-normal">1 Jun 2020</span></td>
-                  <td><span class="fw-bold">$799,00</span></td>
-                  <td><span class="fw-bold text-warning">Due</span></td>
-                  <td>
-                      <div class="btn-group">
-                          <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <span class="icon icon-sm">
-                                  <span class="fas fa-ellipsis-h icon-dark"></span>
-                              </span>
-                              <span class="visually-hidden">Toggle Dropdown</span>
-                          </button>
-                          <div class="dropdown-menu py-0">
-                              <a class="dropdown-item rounded-top" href="#"><span class="fas fa-eye me-2"></span>View Details</a>
-                              <a class="dropdown-item" href="#"><span class="fas fa-edit me-2"></span>Edit</a>
-                              <a class="dropdown-item text-danger rounded-bottom" href="#"><span class="fas fa-trash-alt me-2"></span>Remove</a>
-                          </div>
-                      </div>
-                  </td>
-              </tr> -->
-                     
+            {% include 'includes/partial_user_list.html' %}
           </tbody>
       </table>
-      
   </div>
+  <!-- modal divs here -->
+  <div class="modal fade" id="modal-form-user" tabindex="-1" role="dialog" aria-labelledby="modal-form-user" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
 
+          </div>
+        </div>
+    </div>
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
-{% block javascripts %}{% endblock javascripts %}
+{% block javascripts %}
+<script>
+    $(document).ready( function () {
+        $('#users-table').DataTable();
+    } );
+
+    $('#users-table').DataTable( {
+        columnDefs: [
+            {
+                targets: "_all",
+                className: 'dt-center'
+            }
+        ]
+    } );
+</script>
+{% endblock javascripts %}
+

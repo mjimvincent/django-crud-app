@@ -355,3 +355,56 @@ d.addEventListener("DOMContentLoaded", function(event) {
     }
 
 });
+
+// Custom JS below
+$(document).ready(function(){
+  var loadForm = function () { 
+    var btn = $(this);
+    $.ajax({
+      url: btn.attr("data-url"),
+      type: 'get',
+      dataType: 'json',
+      beforeSend: function () {
+        $("#modal-form-user .modal-content").html("");
+        $("#modal-form-user").modal("show");
+      },
+      success: function (data) {
+        $("#modal-form-user .modal-content").html(data.html_form);
+      }
+    });
+  };
+ 
+  var saveForm = function () {
+    var form = $(this);
+    $.ajax({
+      url: form.attr("action"),
+      data: form.serialize(),
+      type: form.attr("method"),
+      dataType: 'json',
+      success: function (data) {
+        if (data.form_is_valid) {
+          $("#users-table tbody").html(data.html_user_list);
+          $("#modal-form-user").modal("hide");
+        }
+        else {
+          $("#modal-form-user .modal-content").html(data.html_form);
+        }
+      }
+    });
+    return false;
+  };
+ 
+ 
+  /* Binding */
+  $(".js-create-user").click(loadForm);
+  $("#modal-form-user").on("submit", ".js-user-create-form", saveForm);
+ 
+  // Update product
+  $("#users-table").on("click", ".js-update-user", loadForm);
+  $("#modal-form-user").on("submit", ".js-user-update-form", saveForm);
+ 
+  // Delete product
+  $("#users-table").on("click", ".js-delete-user", loadForm);
+  $("#modal-form-user").on("submit", ".js-user-delete-form", saveForm);
+ 
+});
