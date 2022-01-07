@@ -68,6 +68,7 @@
 
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 <script>
     $(document).ready( function () {
         $('#users-table').DataTable();
@@ -81,6 +82,8 @@
             }
         ]
     } );
+
+    
 </script>
 {% endblock javascripts %}
 

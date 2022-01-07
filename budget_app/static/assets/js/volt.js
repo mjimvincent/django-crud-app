@@ -383,8 +383,20 @@ $(document).ready(function(){
       dataType: 'json',
       success: function (data) {
         if (data.form_is_valid) {
-          $("#users-table tbody").html(data.html_user_list);
-          $("#modal-form-user").modal("hide");
+            // $("#users-table tbody").children().remove();
+            
+            // $('#users-table').DataTable().draw();
+            $('#users-table').DataTable().destroy();
+            $("#users-table tbody").html(data.html_user_list);
+            $('#users-table').DataTable( {
+                columnDefs: [
+                    {
+                        targets: "_all",
+                        className: 'dt-center'
+                    }
+                ]
+            } );
+            $("#modal-form-user").modal("hide");
         }
         else {
           $("#modal-form-user .modal-content").html(data.html_form);
